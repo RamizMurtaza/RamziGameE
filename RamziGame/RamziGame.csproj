@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SDL2-CS\SDL2-CS.csproj" />
+    <ProjectReference Include="..\SDL2\SDL2-CS.csproj" />
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
