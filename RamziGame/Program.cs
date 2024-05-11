@@ -1,6 +1,7 @@
 ﻿using SDL2;
 using System;
 using System.Diagnostics.Contracts;
+using System.IO;
 using System.Runtime.InteropServices;
 using static SDL2.SDL;
 using static System.Net.Mime.MediaTypeNames;
@@ -45,7 +46,7 @@ public static class Program
         dstrect.x = WindowW / 2 - dstrect.w / 2;
         dstrect.y = WindowH - dstrect.h - 20;
 
-        var path = Path.Combine(Environment.CurrentDirectory, "plane.bmp");
+        var path = Path.Combine(Environment.CurrentDirectory, "Media/plane.bmp");
         var gHelloWorld = SDL.SDL_LoadBMP(path);
         if (gHelloWorld == IntPtr.Zero)
         {

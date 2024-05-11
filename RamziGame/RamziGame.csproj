@@ -13,7 +13,8 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="xcopy /y $(SolutionDir)\C-Lib\*.dll $(OutDir)" />
+    <Exec Command="xcopy /y /c /e &quot;$(SolutionDir)C-Lib\*.dll&quot; &quot;$(OutDir)&quot;" />
+    <Exec Command="xcopy /y /c /e /i &quot;$(SolutionDir)Media&quot; &quot;$(OutDir)Media&quot;" />
   </Target>
 
 </Project>
