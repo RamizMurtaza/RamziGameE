@@ -95,10 +95,17 @@ public static class Program
                         switch (e.key.keysym.sym)
                         {
                             case SDL_Keycode.SDLK_RIGHT:
-                                dstrect.x += 10;
+                                if (dstrect.x < (WindowW - dstrect.w))
+                                {
+                                    dstrect.x += 10;
+                                }
                                 break;
                             case SDL_Keycode.SDLK_LEFT:
-                                dstrect.x -= 10;
+                                if (dstrect.x > 0)
+                                {
+                                    dstrect.x -= 10;
+                                }
+                                
                                 break;
                             case SDL_Keycode.SDLK_ESCAPE:
                                 isGameRuning = false;
