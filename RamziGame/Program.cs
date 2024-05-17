@@ -55,6 +55,22 @@ public static class Program
         var texture = SDL.SDL_CreateTextureFromSurface(renderer, gHelloWorld);
 
 
+
+        SDL_Rect bolt = new SDL_Rect();
+        bolt.h = 100;
+        bolt.w = 10;
+        bolt.x = WindowW / 2 - bolt.w / 2;
+        bolt.y = WindowH - bolt.h - 20;
+
+        var boltPath = Path.Combine(Environment.CurrentDirectory, "Media/b.bmp");
+        var boltGHelloWorld = SDL.SDL_LoadBMP(boltPath);
+        if (boltGHelloWorld == IntPtr.Zero)
+        {
+            Console.WriteLine($"Unable to load image b.bmp SDL Error:  {SDL.SDL_GetError()}");
+        }
+        var boltTexture = SDL.SDL_CreateTextureFromSurface(renderer, boltGHelloWorld);
+
+
         var freq_ms = SDL.SDL_GetPerformanceFrequency();
         var last_time = SDL.SDL_GetPerformanceCounter();
 
@@ -99,12 +115,14 @@ public static class Program
                                 if (dstrect.x < (WindowW - dstrect.w))
                                 {
                                     dstrect.x += 10;
+                                    bolt.x += 10;
                                 }
                                 break;
                             case SDL_Keycode.SDLK_LEFT:
                                 if (dstrect.x > 0)
                                 {
                                     dstrect.x -= 10;
+                                    bolt.x -= 10;
                                 }
                                 
                                 break;
@@ -116,6 +134,8 @@ public static class Program
                 }
             }
 
+            
+            SDL.SDL_RenderCopy(renderer, boltTexture, IntPtr.Zero, ref bolt);
             SDL.SDL_RenderCopy(renderer, texture, IntPtr.Zero, ref dstrect);
 
             SDL.SDL_RenderPresent(renderer);
