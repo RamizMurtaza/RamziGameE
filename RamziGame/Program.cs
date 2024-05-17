@@ -129,6 +129,10 @@ public static class Program
                             case SDL_Keycode.SDLK_ESCAPE:
                                 isGameRuning = false;
                                 break;
+
+                            case SDL_Keycode.SDLK_SPACE:
+                                bolt.y -= 50;                               
+                                break;
                         }
                         break;
                 }
